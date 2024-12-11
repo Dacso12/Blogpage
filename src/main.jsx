@@ -37,8 +37,8 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
       <KindeProvider
-    clientId="5a7f4f5ec7d74dee9195c062eb2ffe31"
-    domain="https://test11111111111.kinde.com"
+    clientId="yourkinde"
+    domain="yourdomainkinde"
     logoutUri={window.location.origin}
     redirectUri={window.location.origin}
   >
