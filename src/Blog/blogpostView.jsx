@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Typography from "@mui/material/Typography";
-import Header from "./header/Header";
+import Header from "../Reusable/Header";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
@@ -12,9 +12,9 @@ import "./blogpostView.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Alert from "@mui/material/Alert";
 import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
-import CommentPost from "./commentPost";
-import Footer from "./footer/Footer";
-
+import CommentPost from "./commentPost.jsx";
+import Footer from "../Reusable/Footer";
+import CommentIcon from "@mui/icons-material/Comment";
 function blogpostView() {
   const { isAuthenticated } = useKindeAuth();
 
@@ -64,7 +64,6 @@ function blogpostView() {
       });
   };
 
-
   if (loading) {
     return <Typography>Loading post details...</Typography>;
   }
@@ -84,7 +83,7 @@ function blogpostView() {
               The blog was successful deleted.
             </Alert>
           )}
-          <Card key={post?.id} sx={{ maxWidth: 500, }} className="Card2">
+          <Card key={post?.id} sx={{ maxWidth: 300 }} className="Card2">
             <Typography variant="h4" gutterBottom>
               {post?.title}
             </Typography>
@@ -95,47 +94,45 @@ function blogpostView() {
                 style={{ maxWidth: "100%", marginBottom: "20px" }}
               />
             )}
-           
-                <Typography variant="body1">{post?.body}</Typography>
-                </Card>
 
-                {isAuthenticated && (
-              <div style={{ marginTop: '20px' }}>
-                <Button
-                  variant="contained"
-                  color="success"
-                  onClick={() => navigate(`edit`)}
-                  style={{ marginRight: '10px' }}
-                >
-             
-                  Update the blog
-                </Button>
-                <Button
-                  variant="contained"
-                  color="error"
-                  onClick={deleteSumbit}
-                >
-                  Delete the blog
-                </Button>
-              </div>
-            )}
-            
+            <Typography variant="body1">{post?.body}</Typography>
+          </Card>
+
+          {isAuthenticated && (
+            <div style={{ marginTop: "20px" }}>
+              <Button
+                variant="contained"
+                color="success"
+                onClick={() => navigate(`edit`)}
+                style={{ marginRight: "10px" }}
+                size="small"
+              >
+                Update the blog
+              </Button>
+              <Button variant="contained" color="error" onClick={deleteSumbit} size="small">
+                Delete the blog
+              </Button>
+            </div>
+          )}
+
           <Button
-                  variant="contained"
-                  color="secondary"
-                  onClick={() => navigate("/")}
-                  style={{ marginTop: '10px' }}
-                >
-                  Back to homepage
-                </Button>
+            variant="contained"
+            color="secondary"
+            onClick={() => navigate("/")}
+            style={{ marginTop: "10px" }}
+            size="small"
+          >
+            Back to homepage
+          </Button>
         </div>
         <div
-          style={{ padding: 14, textAlign: "right", display: "inline-block" }}
+          style={{ padding: 20, display: "inline-block" }}
           className="box"
-        > 
-                </div>
-                <div>
-          <h1>Comments</h1>
+        ></div>
+        <div>
+          <div style={{ display: "flex", justifyContent: "flex-end" }}>
+            <CommentIcon />
+          </div>
           <Paper style={{ padding: "40px 20px" }}>
             <Grid container wrap="nowrap" spacing={2}>
               <Grid item></Grid>
@@ -153,11 +150,11 @@ function blogpostView() {
               </Grid>
             </Grid>
           </Paper>
+          <CommentPost />
+        </div>
       </div>
-      </div>
-      <CommentPost/>
-      <Footer/>
-      </div>
+      <Footer />
+    </div>
   );
 }
 

@@ -10,7 +10,7 @@ import {
 import CheckIcon from "@mui/icons-material/Check";
 import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
 import { useNavigate } from "react-router-dom";
-import Footer from "../footer/Footer";
+import Footer from "../Reusable/Footer";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -24,8 +24,8 @@ function Login() {
 
     try {
       const response = await login({
-        username: "Bret",
-        email: "Sincere@april.biz",
+        username: username,
+        email: email,
       });
       if (response?.status === 200) {
         console.log("Login successful:", response);
@@ -68,20 +68,19 @@ function Login() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-           <Button
-        variant="contained"
-        color="success"
-        type="submit"
-        sx={{ marginBottom: '15px', marginRight: '10px' }} 
-
-      >
-        Login
-      </Button>
+          <Button
+            variant="contained"
+            color="success"
+            type="submit"
+            sx={{ marginBottom: "15px", marginRight: "10px" }}
+          >
+            Login
+          </Button>
           <Button
             variant="contained"
             color="secondary"
             onClick={() => navigate("/")}
-            sx={{ marginBottom: '15px' }}
+            sx={{ marginBottom: "15px" }}
           >
             Back to homepage
           </Button>
