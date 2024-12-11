@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { styled } from '@mui/material/styles';
-import Footer from "./footer/Footer";
+import Footer from "../Reusable/Footer";
+
 function AddBlog() {
   const navigate = useNavigate();
   const data = { title: "", body: "", img: "" };

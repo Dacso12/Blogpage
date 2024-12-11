@@ -2,9 +2,9 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainPage from "./mainPage.jsx";
-import BlogPostView from "./blogpostView.jsx";
-import Addblog from "./addBlog.jsx";
-import Updateblog from "./updateBlog.jsx";
+import BlogPostView from "./Blog/blogpostView.jsx";
+import Addblog from "./Blog/addBlog.jsx";
+import Updateblog from "./Blog/updateBlog.jsx";
 import Login from "./auth/login.jsx";
 import {KindeProvider} from "@kinde-oss/kinde-auth-react";
 
@@ -37,8 +37,8 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
       <KindeProvider
-    clientId="yourkinde"
-    domain="yourdomainkinde"
+    clientId="YourKinde"
+    domain="Yourdomain"
     logoutUri={window.location.origin}
     redirectUri={window.location.origin}
   >

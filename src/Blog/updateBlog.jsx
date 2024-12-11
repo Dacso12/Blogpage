@@ -10,7 +10,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import Footer from "./footer/Footer";
+import Footer from "../Reusable/Footer";
 function UpdateBlog() {
   const { id } = useParams();
   const data = { title: "", body: "" };
